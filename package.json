@@ -1,0 +1,33 @@
+{
+  "name": "dynamo-table-id",
+  "version": "0.0.1",
+  "description": "Adds ID/counter generating methods to dynamo-table instances",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -t 100s",
+    "coverage": "istanbul cover ./node_modules/.bin/_mocha -- -t 10s"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mhart/dynamo-table-id.git"
+  },
+  "keywords": [
+    "dynamo",
+    "dynamodb",
+    "dynamo-table",
+    "id"
+  ],
+  "author": "Michael Hart <michael.hart.au@gmail.com> (http://github.com/mhart)",
+  "license": "MIT",
+  "devDependencies": {
+    "should": "~2.0.2",
+    "mocha": "~1.13.0",
+    "async": "~0.2.9",
+    "dynalite": "~0.0.24",
+    "dynamo-table": "~0.6.16",
+    "istanbul": "~0.1.44"
+  },
+  "optionalDependencies": {
+    "dynamo-table": "~0.6.16"
+  }
+}
