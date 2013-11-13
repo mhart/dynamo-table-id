@@ -8,7 +8,7 @@ module.exports = function dynamoTableId(table, options) {
   var idTable = options.idTable || 'last-ids'
 
   if (typeof idTable == 'string') {
-    idTable = require('dynamo-table')(idTable)
+    idTable = require('dynamo-table')(idTable, {client: table.client})
   }
 
   table.nextId = function nextId(length, cb) {

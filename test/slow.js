@@ -17,7 +17,7 @@ describe('integration', function() {
       setup = dynalite.listen.bind(dynalite, 4567)
     }
 
-    table = dynamoTable('dynamo-table-id-integration-test', { region: region })
+    table = dynamoTable('dynamo-table-id-integration-test', {region: region})
 
     setup(function(err) {
       if (err) return done(err)
@@ -32,7 +32,7 @@ describe('integration', function() {
   describe('nextId()', function() {
 
     it('should return 1 by default', function(done) {
-      var tableToWrap = dynamoTableId(dynamoTable('test-1'), {idTable: table})
+      var tableToWrap = dynamoTableId(dynamoTable('test-1', {region: region}), {idTable: table})
       tableToWrap.nextId(function(err, nextId) {
         if (err) return done(err)
         nextId.should.equal(1)
@@ -45,7 +45,7 @@ describe('integration', function() {
     })
 
     it('should return list of IDs if specified', function(done) {
-      var tableToWrap = dynamoTableId(dynamoTable('test-2'), {idTable: table})
+      var tableToWrap = dynamoTableId(dynamoTable('test-2', {region: region}), {idTable: table})
       tableToWrap.nextId(3, function(err, nextIds) {
         if (err) return done(err)
         nextIds.should.eql([1, 2, 3])
@@ -58,7 +58,7 @@ describe('integration', function() {
     })
 
     it('should increment multiple times in parallel', function(done) {
-      var tableToWrap = dynamoTableId(dynamoTable('test-3'), {idTable: table}), calls = [], i
+      var tableToWrap = dynamoTableId(dynamoTable('test-3', {region: region}), {idTable: table}), calls = [], i
       for (i = 0; i < 20; i++)
         calls.push(tableToWrap.nextId.bind(tableToWrap))
       async.parallel(calls, function(err, results) {
@@ -74,7 +74,7 @@ describe('integration', function() {
   describe('setLastId()', function() {
 
     it('should set last id correctly', function(done) {
-      var tableToWrap = dynamoTableId(dynamoTable('test-4'), {idTable: table})
+      var tableToWrap = dynamoTableId(dynamoTable('test-4', {region: region}), {idTable: table})
       tableToWrap.setLastId(23, function(err) {
         if (err) return done(err)
         tableToWrap.nextId(function(err, nextId) {
