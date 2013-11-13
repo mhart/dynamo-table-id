@@ -1,6 +1,6 @@
 {
   "name": "dynamo-table-id",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Adds ID/counter generating methods to dynamo-table instances",
   "main": "index.js",
   "scripts": {
