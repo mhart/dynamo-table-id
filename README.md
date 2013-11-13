@@ -59,17 +59,17 @@ Wraps the given [dynamo-table](https://github.com/mhart/dynamo-table) object wit
 Current options are:
 
   - `idTable` (defaults to `last-ids`) - the name of a table that must already exist with a string hash key
-  - `key` (defaults to the table name) - the key used to hold the value item
+  - `key` (defaults to the table name) - the hash key value used to hold the value item
   - `attr` (defaults to `lastId`) - the attribute name of the incrementing value
 
 ### nextId([length], callback)
 
-Will return a single number (or string if the hash key is type `S`, or range key in the case of a range table) if
-no length is given - otherwise an array of numbers/strings of the given length (even if length is 0 or 1)
+If `length` is not specified, this will generate a new numerical value and return it in the callback -
+otherwise an array of numbers of the given length is generated and returned (even if length is 0 or 1).
 
 ### setLastId(lastId, callback)
 
-Sets the current value of the last value - ie, the next generated value will be one greater than this.
+Sets the current value of the last value - ie, the next generated value will be an increment above this value.
 
 Installation
 ------------
