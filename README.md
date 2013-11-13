@@ -32,7 +32,7 @@ table.nextId(3, function(err, ids) {
   if (err) throw err
 
   console.log(ids)
-  // [5, 6, 7]
+  // [2, 3, 4]
 })
 
 // Can also set a value to start incrementing from
