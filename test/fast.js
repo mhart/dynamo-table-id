@@ -1,6 +1,13 @@
 var should = require('should'),
     dynamoTableId = require('..')
 
+// ensure env variables have content to keep dynamo-client happy
+before(function() {
+  var env = process.env
+  if (!env.AWS_ACCESS_KEY_ID || !env.AWS_SECRET_ACCESS_KEY)
+    env.AWS_ACCESS_KEY_ID = env.AWS_SECRET_ACCESS_KEY = 'a'
+})
+
 describe('dynamoTableId', function() {
 
   describe('constructor', function() {
