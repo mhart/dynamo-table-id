@@ -5,6 +5,7 @@ var should = require('should'),
     dynamoTableId = require('..'),
     useLive = process.env.USE_LIVE_DYNAMO, // set this (and AWS credentials) if you want to test on a live instance
     region = process.env.AWS_REGION, // will just default to us-east-1 if not specified
+    dynaliteServer = dynalite(),
     table
 
 describe('integration', function() {
@@ -14,7 +15,7 @@ describe('integration', function() {
 
     if (!useLive) {
       region = {host: 'localhost', port: 4567, credentials: {accessKeyId: 'a', secretAccessKey: 'a'}}
-      setup = dynalite.listen.bind(dynalite, 4567)
+      setup = dynaliteServer.listen.bind(dynaliteServer, 4567)
     }
 
     table = dynamoTable('dynamo-table-id-integration-test', {region: region})
