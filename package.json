@@ -28,6 +28,6 @@
     "istanbul": "~0.1.44"
   },
   "optionalDependencies": {
-    "dynamo-table": "~0.6.16"
+    "dynamo-table": "~0.7.2"
   }
 }
